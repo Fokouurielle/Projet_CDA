@@ -1,0 +1,72 @@
+<CENTER> <h1>Inscription</h1> </CENTER>
+
+{% block body %}
+
+			<!-- Row -->
+			<div class="row signpages text-center">
+				<div class="col-md-12">
+					<div class="card">
+						<div class="row row-sm">
+							<div class="col-lg-6 col-xl-5 d-none d-lg-block text-center bg-primary details">
+								<div class="mt-5 pt-5 p-2 pos-absolute">
+									<h3 class="mt-4 text-white">Créer votre compte</h3>
+								</div>
+							</div>
+							<div class="col-lg-6 col-xl-7 col-xs-12 col-sm-12 login_form ">
+								<div class="main-container container-fluid">
+									<div class="row row-sm">
+										<div class="card-body mt-2 mb-2">
+											<div class="clearfix"></div>
+											<p class="mb-4 text-muted tx-13 ms-0 text-start">L'inscription est gratuite et ne prend qu'une minute.</p>
+                                            <!--
+											<form>
+												<div class="form-group text-start">
+													<label>Name</label>
+													<input class="form-control" placeholder="Enter your Name" type="text">
+												</div>
+												<br><br>	<br><br>
+												<div class="form-group text-start">
+													<label>Email</label>
+													<input class="form-control" placeholder="Enter your email" type="text">
+												</div>
+												<br><br>	<br><br>
+												<div class="form-group text-start">
+													<label>Password</label>
+													<input class="form-control" placeholder="Entrer votre mot de passe" type="password">
+												</div>
+												<button class="btn ripple btn-main-primary btn-block">Créer un compte</button>
+											</form>
+                                            -->
+                                            {{ form_start(registrationForm) }}
+                                                {{ form_row(registrationForm.email) }}
+                                                {{ form_row(registrationForm.plainPassword, {
+                                                    label: 'Password'
+                                                }) }}
+                                                {{ form_row(registrationForm.agreeTerms) }}
+
+                                                <button type="submit" class="btn">S'inscrire</button>
+                                            {{ form_end(registrationForm) }}
+
+											<div class="text-start mt-5 ms-0">
+												<p class="mb-0">Avez vous déja un compte? <a href="{{ path('app_login') }}">Se connecter</a></p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- End Row -->
+
+		</div>
+		<!-- End Page -->
+
+
+
+    {% for flash_error in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flash_error }}</div>
+    {% endfor %}
+
+{% endblock %}
