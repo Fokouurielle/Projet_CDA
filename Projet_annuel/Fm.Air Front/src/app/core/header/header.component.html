@@ -1,0 +1,20 @@
+
+<nav mat-tab-nav-bar class="menu">
+  <a mat-tab-link
+     *ngFor="let link of navLinks; let i = index"
+     [routerLink]="link.link"
+     routerLinkActive #rla="routerLinkActive"
+     [ngClass]="{ 'active': rla.isActive }"
+     [attr.aria-current]="rla.isActive ? 'page' : null">
+    {{ link.label }}
+  </a>
+  <!-- Boutons Se connecter et S'enregistrer avec icônes -->
+<div class="header-buttons">
+  <button class="btn">
+    <span class="material-icons">login</span> Se connecter
+  </button>
+  <button class="btn">
+    <span class="material-icons">person_add</span> S'enregistrer
+  </button>
+</div>
+</nav>

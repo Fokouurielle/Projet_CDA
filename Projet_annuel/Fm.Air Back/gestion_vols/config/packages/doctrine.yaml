@@ -1,0 +1,51 @@
+doctrine:
+  dbal:
+      #driver: pdo_mysql
+      #server_version: '5.7'
+      driver: 'pdo_pgsql'
+      #server_version: '13.3'
+      # charset: utf8mb4
+      default_table_options:
+        charset: utf8
+        collate: utf8mb4_unicode_ci
+      #mapping_types:
+      #    enum: string
+      # url: '%env(resolve:DATABASE_URL)%'
+
+      # IMPORTANT: You MUST configure your server version,
+      # either here or in the DATABASE_URL env var (see .env file)
+      # server_version: '5.7'
+      url: "%env(resolve:DATABASE_URL)%"
+      # if using pdo_sqlite as your database driver:
+      #   1. add the path in parameters.yml
+      #     e.g. database_path: '%kernel.project_dir%/var/data/data.sqlite'
+      #   2. Uncomment database_path in parameters.yml.dist
+      #   3. Uncomment next line:
+      #path: '%database_path%'
+      mapping_types:
+          enum: string
+          set: string
+          varbinary: string
+          tinyblob: text
+          enumStatus: string
+          enumRole: string
+      types:
+          enumStatus: App\DBAL\EnumStatusType
+          enumRole: App\DBAL\EnumRoleType
+  orm:
+      auto_generate_proxy_classes: true
+      naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+      auto_mapping: true
+      mappings:
+          App:
+              is_bundle: false
+              type: annotation
+              dir: "%kernel.project_dir%/src/Entity"
+              prefix: 'App\Entity'
+              alias: App
+      dql:
+          string_functions:
+              MONTH: DoctrineExtensions\Query\Postgresql\Month
+              YEAR: DoctrineExtensions\Query\Postgresql\Year
+              DAY: DoctrineExtensions\Query\Postgresql\Day
+

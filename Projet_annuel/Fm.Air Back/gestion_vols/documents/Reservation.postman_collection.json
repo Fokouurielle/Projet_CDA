@@ -1,0 +1,77 @@
+{
+	"info": {
+		"_postman_id": "20818033-5c70b524-b105-479e-ab1a-dcbb75098161",
+		"name": "Reservation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "snip2020"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\": \"nels.fomekong@email.com\",\n\t\"nom\": \"Nel\",\n    \"telPrincipal\": \"697036812\",\n\t\"prenom\": \"bob\",\n\t\"password\": \"ZW1lbmVjMjA=\",\n\t\"role\": \"CLIENT\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "X-AUTH-TOKEN",
+						"value": "snip2020"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"email\": \"winnie@email.com\",\n   \"password\": \"ZW1lbmVjMjA=\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
