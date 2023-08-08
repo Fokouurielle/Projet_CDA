@@ -1,0 +1,451 @@
+<main>
+  <div class="position-relative">
+    <!-- Hero for FREE version -->
+    <section class="section section-lg section-hero section-shaped">
+      <!-- Background circles -->
+      <div class="shape shape-style-1 shape-primary">
+        <span class="span-150"></span>
+        <span class="span-50"></span>
+        <span class="span-50"></span>
+        <span class="span-75"></span>
+        <span class="span-100"></span>
+        <span class="span-75"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
+        <span class="span-50"></span>
+        <span class="span-100"></span>
+      </div>
+      <div class="container shape-container d-flex align-items-center py-lg">
+        <div class="col px-0">
+          <div class="row align-items-center justify-content-center">
+            <div class="col-lg-12 text-center">
+              <p class="lead text-white">
+                Voyagez partout avec flexibilité, trouvez un billet pour votre
+                prochain voyage.
+              </p>
+              <div class="row d-flex align-items-center mt-4">
+                <div class="col">
+                  <div class="custom-control custom-radio mb-3">
+                    <input
+                      name="custom-radio-1"
+                      class="custom-control-input"
+                      type="radio"
+                    />
+                    <label
+                      class="custom-control-label text-white"
+                      for="customRadio1"
+                    >
+                      <span>Aller simple</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="custom-control custom-radio mb-3">
+                    <input
+                      name="custom-radio-1"
+                      class="custom-control-input"
+                      checked
+                      type="radio"
+                    />
+                    <label
+                      class="custom-control-label text-white"
+                      for="customRadio2"
+                    >
+                      <span>Aller-retour</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="custom-control custom-radio mb-3">
+                    <input
+                      name="custom-radio-1"
+                      class="custom-control-input"
+                      type="radio"
+                    />
+                    <label
+                      class="custom-control-label text-white"
+                      for="customRadio2"
+                    >
+                      <span>Multi-destination</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <select class="form-control">
+                        <option value="Economique">Economique</option>
+                        <option value="Business">Business</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <select class="form-control">
+                        <option value="bagage">Bagage</option>
+                        <option value="sans-bagage">Sans Bagage</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="mt-4">
+                <div class="input-daterange datepicker row align-items-center">
+                  <div class="col">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <select class="form-control" aria-placeholder="De...">
+                          <option value="">De...</option>
+                          <option value="Paris">Paris</option>
+                          <option value="Belgique">Belgique</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <select class="form-control">
+                          <option value="">A...</option>
+                          <option value="Paris">Paris</option>
+                          <option value="Belgique">Belgique</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div
+                      class="form-group"
+                      [ngClass]="{ focused: focus3 === true }"
+                    >
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="ni ni-calendar-grid-58"></i
+                          ></span>
+                        </div>
+                        <input
+                          class="form-control datepicker"
+                          placeholder="Depart le..."
+                          name="dp1"
+                          [(ngModel)]="model1"
+                          ngbDatepicker
+                          #d1="ngbDatepicker"
+                          (click)="d1.toggle()"
+                          type="text"
+                          [dayTemplate]="t"
+                          (dateSelect)="startDateChanged($event)"
+                          autocomplete="off"
+                          (focus)="focus3 = true"
+                          (blur)="focus3 = false"
+                        />
+                        <ng-template #t let-date let-focused="focused">
+                          <span
+                            class="custom-day"
+                            [class.text-white]="isActive(date)"
+                            [class.range-end]="isRangeEnd(date)"
+                            [class.range-start]="isRangeStart(date)"
+                            [class.btn-light]="isActive(date)"
+                            [class.bg-primary]="isActive(date)"
+                            [class.range]="isInRange(date)"
+                            [class.faded]="isInRange(date)"
+                          >
+                            {{ date.day }}
+                          </span>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div
+                      class="form-group"
+                      [ngClass]="{ focused: focus4 === true }"
+                    >
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="ni ni-calendar-grid-58"></i
+                          ></span>
+                        </div>
+                        <input
+                          class="form-control datepicker"
+                          placeholder="Retour le..."
+                          name="dp2"
+                          [(ngModel)]="model2"
+                          ngbDatepicker
+                          #d2="ngbDatepicker"
+                          (click)="d2.toggle()"
+                          (focus)="focus4 = true"
+                          (blur)="focus4 = false"
+                          type="text"
+                          [dayTemplate]="t1"
+                          (dateSelect)="endDateChanged($event)"
+                          autocomplete="off"
+                        />
+                        <ng-template #t1 let-date let-focused="focused">
+                          <span
+                            class="custom-day"
+                            [class.text-white]="isActive(date)"
+                            [class.range-end]="isRangeEnd(date)"
+                            [class.range-start]="isRangeStart(date)"
+                            [class.btn-light]="isActive(date)"
+                            [class.bg-primary]="isActive(date)"
+                            [class.range]="isInRange(date)"
+                            [class.faded]="isInRange(date)"
+                          >
+                            {{ date.day }}
+                          </span>
+                        </ng-template>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col d-flex justify-content-center">
+                    <div class="form-group">
+                      <a class="btn btn-success text-white">
+                        <i
+                          class="fa fa-arrow-right"
+                          style="font-size: 2rem"
+                        ></i>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- SVG separator -->
+      <div class="separator separator-bottom separator-skew zindex-100">
+        <svg
+          x="0"
+          y="0"
+          viewBox="0 0 2560 100"
+          preserveAspectRatio="none"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <polygon class="fill-white" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+    </section>
+  </div>
+  <section class="section section-components pb-0" id="section-components">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <!-- Basic elements -->
+          <h2 class="mb-5 text-center">
+            <span>Une expérience de voyage unique avec FM.Air</span>
+          </h2>
+        </div>
+        <div class="col-lg-12">
+          <div class="row row-grid">
+            <div class="col-lg-3">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-4">
+                  <div class="order-lg-2 ml-lg-auto">
+                    <div class="position-relative pl-md-5">
+                      <img
+                        src="./assets/img/ill/ill-2.svg"
+                        class="img-center img-fluid"
+                      />
+                    </div>
+                  </div>
+                  <h6 class="text-uppercase">
+                    Les meilleures offres de voyage
+                  </h6>
+                  <p class="description mt-3">
+                    Trouvez les meilleures offres disponibles parmi plus de 900
+                    sites.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-4">
+                  <div class="order-lg-2 ml-lg-auto">
+                    <div class="position-relative pl-md-5">
+                      <img
+                        src="./assets/img/ill/ill-2.svg"
+                        class="img-center img-fluid"
+                      />
+                    </div>
+                  </div>
+                  <h6 class="text-uppercase">
+                    Recherchez en toute tranquillité
+                  </h6>
+                  <p class="description mt-3">
+                    Les prix que vous voyez ne changent pas en fonction de vos
+                    recherches.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-4">
+                  <div class="order-lg-2 ml-lg-auto">
+                    <div class="position-relative pl-md-5">
+                      <img
+                        src="./assets/img/ill/ill-2.svg"
+                        class="img-center img-fluid"
+                      />
+                    </div>
+                  </div>
+                  <h6 class="text-uppercase">Réservation flexible</h6>
+                  <p class="description mt-3">
+                    Trouvez facilement des vols modifiables sans frais.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-3">
+              <div class="card card-lift--hover shadow border-0">
+                <div class="card-body py-4">
+                  <div class="order-lg-2 ml-lg-auto">
+                    <div class="position-relative pl-md-5">
+                      <img
+                        src="./assets/img/ill/ill-2.svg"
+                        class="img-center img-fluid"
+                      />
+                    </div>
+                  </div>
+                  <h6 class="text-uppercase">Vérifié et gratuit</h6>
+                  <p class="description mt-3">
+                    Utilisation entièrement gratuite - aucuns frais cachés.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-components pb-0" id="section-components">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-12">
+          <!-- Basic elements -->
+          <h2 class="mb-5 text-center">
+            <span>Villes tendances</span>
+          </h2>
+        </div>
+        <div class="col-lg-6 justify-content-center d-flex align-items-center">
+          <div class="row">
+            <div class="col-6">
+              <img
+                src="./assets/img/ville/img1.jpg"
+                alt="Rounded image"
+                class="img-fluid rounded shadow"
+              />
+            </div>
+            <div class="col-6">
+              <img
+                src="./assets/img/ville/img2.jpg"
+                alt="Circle image"
+                class="img-fluid rounded shadow"
+              />
+            </div>
+            <div class="col-6 mt-5">
+              <img
+                src="./assets/img/ville/img3.jpg"
+                alt="Raised image"
+                class="img-fluid rounded shadow-lg"
+              />
+            </div>
+            <div class="col-6 mt-5">
+              <img
+                src="./assets/img/ville/img4.jpg"
+                alt="Raised circle image"
+                class="img-fluid rounded shadow-lg"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-6 justify-content-center d-flex align-items-center">
+          <div class="row">
+            <div class="col-12">
+              <ngb-carousel>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img5.jpg"
+                    alt="First slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img6.jpg"
+                    alt="Second slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img7.jpg"
+                    alt="Third slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img8.jpg"
+                    alt="Fourth slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img9.JPG"
+                    alt="Five slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img1.jpg"
+                    alt="Five slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+                <ng-template ngbSlide>
+                  <img
+                    class="img-fluid"
+                    src="./assets/img/ville/img3.jpg"
+                    alt="Five slide"
+                    style="height: inherit"
+                  />
+                </ng-template>
+              </ngb-carousel>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section section-components pb-0" id="section-components">
+    <div class="container">
+      <hr />
+      <div class="row row-grid align-items-center">
+        <div class="col-lg-12">
+          <p>
+            Corporate website Site map Conditions générales Politique de
+            confidentialité Securité Cookies
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
